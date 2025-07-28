@@ -25,20 +25,20 @@
             run: |
               pyinstaller --onefile --name ml_app src/ui.py
 
-          - name: Debug CERT_PFX secret
-            shell: pwsh
-            run: |
-              if (-not $Env:CERT_PFX) {
-                Write-Host "CERT_PFX is not set"
-                exit 1
-              }
-              $length = $Env:CERT_PFX.Length
-              Write-Host "CERT_PFX length: $length"
-              if ($length -lt 100) {
-                Write-Host "CERT_PFX seems too short, please check the secret"
-                exit 1
-              }
-              Write-Host "CERT_PFX appears to be set correctly."
+          ###- name: Debug CERT_PFX secret
+            ##shell: pwsh
+            ##run: |
+              ##if (-not $Env:CERT_PFX) {
+                ##Write-Host "CERT_PFX is not set"
+                ##exit 1
+              ##}
+              ##$length = $Env:CERT_PFX.Length
+              ##Write-Host "CERT_PFX length: $length"
+              ##if ($length -lt 100) {
+                ##Write-Host "CERT_PFX seems too short, please check the secret"
+                ##exit 1
+              ##}
+              ##Write-Host "CERT_PFX appears to be set correctly."
 
           - name: Decode certificate
             id: decode_cert
@@ -81,6 +81,6 @@
               format: table
               exit-code: '1'
 
-          - name: Clean up certificate
-            if: always()
-            run: rm code_sign.pfx
+          ##- name: Clean up certificate
+            ##if: always()
+            ##run: rm code_sign.pfx
