@@ -1,0 +1,85 @@
+    version: '3.8'
+    
+    # docker/docker-compose.yml
+    #
+    # Compose file for the local‑only ML governance lab.  All services
+    # bind exclusively to 127.0.0.1 so no ports are exposed beyond the
+    # workstation, protecting PHI in accordance with health system
+    # policies.  Secrets for Grafana and
+    # PostgreSQL are provided via the Docker secrets mechanism.  The
+    # GF_SECURITY_ADMIN_PASSWORD__FILE environment variable instructs
+    # Grafana to load the admin password from the mounted secret file
+    # PostgreSQL 15 is used for
+    # compatibility with Evidently and Seismometer pipelines.
+    
+    services:
+      db:
+        image: postgres:15
+        container_name: ml_db
+        restart: unless-stopped
+        environment:
+          POSTGRES_USER: ml_user
+          POSTGRES_DB: ml_db
+          POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+        ports:
+          - "127.0.0.1:5432:5432"
+        volumes:
+          - db_data:/var/lib/postgresql/data
+        healthcheck:
+          test: ["CMD", "pg_isready", "-U", "ml_user"]
+          interval: 10s
+          retries: 5
+        secrets:
+          - postgres_password
+    
+      grafana:
+        image: grafana/grafana:10.4.0
+        container_name: ml_grafana
+        restart: unless-stopped
+        depends_on:
+          db:
+            condition: service_healthy
+        environment:
+          GF_SECURITY_ADMIN_USER: admin
+          # Use Grafana’s file‑based secret pattern.
+          GF_SECURITY_ADMIN_PASSWORD__FILE: /run/secrets/grafana_admin_password
+          GF_INSTALL_PLUGINS: grafana-piechart-panel
+        ports:
+          - "127.0.0.1:3000:3000"
+        volumes:
+          - grafana_data:/var/lib/grafana
+        secrets:
+          - grafana_admin_password
+    
+      app:
+        build:
+          context: ..
+          dockerfile: Dockerfile
+        container_name: ml_app
+        depends_on:
+          db:
+            condition: service_healthy
+        environment:
+          # The application receives the database password via file and
+          # constructs its own connection string at runtime.  This avoids
+          # interpolating secrets into compose files where they could be
+          # inadvertently exposed.
+          DATABASE_USER: ml_user
+          DATABASE_NAME: ml_db
+          DATABASE_PASSWORD_FILE: /run/secrets/postgres_password
+        ports:
+          - "127.0.0.1:8000:8000"
+        command: ["sleep", "infinity"]
+        secrets:
+          - postgres_password
+          - grafana_admin_password
+    
+    volumes:
+      db_data:
+      grafana_data:
+    
+    secrets:
+      grafana_admin_password:
+        file: ../config/grafana_admin_password.txt
+      postgres_password:
+        file: ../config/postgres_password.txt
