@@ -33,6 +33,14 @@
             env:
               CERT_PFX: ${{ secrets.CERT_PFX }}
 
+          - name: List code_sign.pfx and its size
+            shell: pwsh
+            run: |
+              Write-Host "Content of working dir:"
+              Get-ChildItem -Recurse .
+              Write-Host "PFX file info:"
+              Get-Item code_sign.pfx | Format-List *
+
           - name: Sign executable
             shell: pwsh
             run: |
