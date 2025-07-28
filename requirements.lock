@@ -1210,7 +1210,7 @@ numba==0.61.0 \
 numpy==1.26.0 \
     --hash=sha256:7f6bad22a791226d0a5c7c27a80a20e11cfe09ad5ef9084d4d3fc4a299cca505 \
     --hash=sha256:e062aa24638bb5018b7841977c360d2f5917268d125c833a686b7cbabbec496c \
-    --hash=sha256"eae430ecf5794cb7ae7fa3808740b015aa80747e5266153128ef055975a72b99
+    --hash=sha256:eae430ecf5794cb7ae7fa3808740b015aa80747e5266153128ef055975a72b99
     # via
     #   -r requirements.in
     #   contourpy
