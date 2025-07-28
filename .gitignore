@@ -1,50 +1,6 @@
-# --- Python bytecode ---
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-
-# --- Virtualenv ---
+*.swp
 .venv/
-
-# --- pytest cache ---
-.pytest_cache/
-
-# --- Jupyter notebooks ---
-.ipynb_checkpoints/
-
-# --- Build artifacts ---
-build/
-dist/
-*.egg-info/
-
-# --- IDE configs ---
-.vscode/
-.idea/
-
-# --- OS junk ---
-.DS_Store
-Thumbs.db
-
-# --- Logs ---
-*.log
-
-# --- ML‑Governance Lab data folders ---
-data/
-models/
-config/
-
-# Allow Git to see the directories themselves (so we can keep .gitkeep)
-!data/
-!models/
-!config/
-
-# But ignore everything inside them…
-data/**
-models/**
-config/**
-
-# …except our placeholder files
-!data/.gitkeep
-!models/.gitkeep
-!config/.gitkeep
+wsl-venv/
+.wheels/
+ml-governance-lab/
+wheel*hashes.txt
