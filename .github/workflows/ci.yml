@@ -58,6 +58,7 @@
 
           - name: Sign executable
             shell: pwsh
+            if: ${{ env.CERT_PFX != '' }}
             run: |
               $signtool = "C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe"
               & $signtool sign /f code_sign.pfx /p $Env:CERT_PASS /tr http://timestamp.digicert.com /td sha256 /fd sha256 dist\ml_app.exe
