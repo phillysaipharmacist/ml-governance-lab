@@ -83,9 +83,7 @@ beautifulsoup4==4.13.4 \
 bleach[css]==6.2.0 \
     --hash=sha256:117d9c6097a7c3d22fd578fcd8d35ff1e125df6736f554da4e432fdd63f31e5e \
     --hash=sha256:123e894118b8a599fd80d3ec1a6d4cc7ce4e5882b1317a7e1ba69b56e95f991f
-    # via
-    #   bleach
-    #   nbconvert
+    # via nbconvert
 build==1.2.2.post1 \
     --hash=sha256:1d61c0887fa860c01971625baae8bdd338e517b836a2f70dd1f7aa3a6b2fc5b5 \
     --hash=sha256:b36993e92ca9375a219c99e606a122ff365a760a2d4bba0caa09bd5278b608b7
@@ -1254,8 +1252,8 @@ packaging==25.0 \
     #   pyinstaller-hooks-contrib
     #   statsmodels
 pandas[parquet]==2.1.0 \
-    --hash=sha256:62c24c7fc59e42b775ce0679cfa7b14a5f9bfb7643cfbe708c960699e05fb918 \
-    --hash=sha256:629124923bcf798965b054a540f9ccdfd60f71361255c81fa1ecd94a904b9dd3
+    --hash=sha256:629124923bcf798965b054a540f9ccdfd60f71361255c81fa1ecd94a904b9dd3 \
+    --hash=sha256:62c24c7fc59e42b775ce0679cfa7b14a5f9bfb7643cfbe708c960699e05fb918
     # via
     #   -r requirements.in
     #   evidently
@@ -1634,8 +1632,8 @@ pygments==2.19.2 \
     #   nbconvert
     #   rich
 pyinstaller==6.1.0 \
-    --hash=sha256:f9f5bcaef6122d93c54ee7a9ecb07eab5b81a7ebfb5cb99af2b2a6ff49eff62f \
-    --hash=sha256:4368e4eb9999ce32e3280330b3c26f175e0fa7fa13efb4d2dc4ade488ff6d7c2
+    --hash=sha256:4368e4eb9999ce32e3280330b3c26f175e0fa7fa13efb4d2dc4ade488ff6d7c2 \
+    --hash=sha256:f9f5bcaef6122d93c54ee7a9ecb07eab5b81a7ebfb5cb99af2b2a6ff49eff62f
     # via -r requirements.in
 pyinstaller-hooks-contrib==2025.8 \
     --hash=sha256:3402ad41dfe9b5110af134422e37fc5d421ba342c6cb980bd67cb30b7415641c \
@@ -2476,10 +2474,8 @@ uuid6==2025.0.1 \
 uvicorn[standard]==0.35.0 \
     --hash=sha256:197535216b25ff9b785e29a0b79199f55222193d47f820816e7da751e9bc8d4a \
     --hash=sha256:bc662f087f7cf2ce11a1d7fd70b90c9f98ef2e2831556dd078d131b96cc94a01
-    # via
-    #   evidently
-    #   uvicorn
-uvloop==0.21.0; sys_platform != "win32" \
+    # via evidently
+uvloop==0.21.0 \
     --hash=sha256:0878c2640cf341b269b7e128b1a5fed890adc4455513ca710d77d5e93aa6d6a0 \
     --hash=sha256:10d66943def5fcb6e7b37310eb6b5639fd2ccbc38df1177262b0640c3ca68c1f \
     --hash=sha256:10da8046cc4a8f12c91a1c39d1dd1585c41162a15caaef165c2174db9ef18bdc \
@@ -2521,9 +2517,7 @@ uvloop==0.21.0; sys_platform != "win32" \
 visions[type-image-path]==0.8.1 \
     --hash=sha256:37f55c37d7bcf124054e612850b28a4f0bab9b200733cedd8f1781c3ac5cc3f0 \
     --hash=sha256:aca16b66c93acf6c39d3b6b952429947605203e02c0678a42ea06257fcbb1211
-    # via
-    #   visions
-    #   ydata-profiling
+    # via ydata-profiling
 watchdog==6.0.0 \
     --hash=sha256:07df1fdd701c5d4c8e55ef6cf55b8f0120fe1aef7ef39a1c6fc6bc2e606d517a \
     --hash=sha256:20ffe5b202af80ab4266dcd3e91aae72bf2da48c0d33bdb15c66658e685e94e2 \
