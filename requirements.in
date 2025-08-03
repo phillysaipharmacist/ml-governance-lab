@@ -8,3 +8,4 @@ seismometer==0.4.0
 pyinstaller==6.1.0
 docker==7.1.0
 pip-tools==7.0.0
+uvloop==0.21.0; sys_platform != "win32"
